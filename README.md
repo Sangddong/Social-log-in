@@ -14,8 +14,8 @@ REST API를 통한 소셜 로그인 통합 구현 샘플 코드입니다. <br />
 ## 💻 Skills
 <img src="https://img.shields.io/badge/NestJs-E0234E?style=for-the-badge&logoColor=white&logo=NestJs"/> <img src="https://img.shields.io/badge/TypeORM-FE0803?style=for-the-badge&logoColor=white&logo=TypeORM"/>
 ## Step by step
-1️⃣ 환경설정 : <a href="https://github.com/Sangddong/Social-log-in/tree/5d6321144f9965dae8842f32e1bfaa333923f0c7" target="_blank">코드 보러가기</a> <br />
-2️⃣ 인가 코드 받기 : <a href="https://github.com/Sangddong/Social-log-in/tree/f4d3ce7657ca1d50970be0772a61ab046095d17f" target="_blank">코드 보러가기</a> <br />
-3️⃣ 액세스 토큰 받기 : <a href="https://github.com/Sangddong/Social-log-in/tree/0dca49e696231b3150b080b6394f61fc4d384c71" target="_blank">코드 보러가기</a> <br />
-4️⃣ 사용자 정보 받기 : <a href="https://github.com/Sangddong/Social-log-in/tree/6533d0b9b6634d1556ee99f6c3ce3927fcec0691" target="_blank">코드 보러가기</a> <br />
-5️⃣ 사용자 등록하기 : <a href="https://github.com/Sangddong/Social-log-in/tree/7213764c609fa2ebc134831d6ad44be743c9de63" target="_blank">코드 보러가기</a> <br />
+1️⃣ 환경설정 : <a href="https://github.com/Sangddong/Social-log-in/tree/5d6321144f9965dae8842f32e1bfaa333923f0c7/src" target="_blank">코드 보러가기</a> <br />
+2️⃣ 인가 코드 받기 : <a href="https://github.com/Sangddong/Social-log-in/tree/f4d3ce7657ca1d50970be0772a61ab046095d17f/src" target="_blank">코드 보러가기</a> <br />
+3️⃣ 액세스 토큰 받기 : <a href="https://github.com/Sangddong/Social-log-in/tree/0dca49e696231b3150b080b6394f61fc4d384c71/src" target="_blank">코드 보러가기</a> <br />
+4️⃣ 사용자 정보 받기 : <a href="https://github.com/Sangddong/Social-log-in/tree/6533d0b9b6634d1556ee99f6c3ce3927fcec0691/src" target="_blank">코드 보러가기</a> <br />
+5️⃣ 사용자 등록하기 : <a href="https://github.com/Sangddong/Social-log-in/tree/7213764c609fa2ebc134831d6ad44be743c9de63/src" target="_blank">코드 보러가기</a> <br />
