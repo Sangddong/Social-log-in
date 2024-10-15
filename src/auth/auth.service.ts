@@ -1,8 +1,6 @@
-import { Response } from 'express';
-import { Injectable, Param } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import axios from 'axios';
-import { platform } from 'os';
 import { User } from 'src/users/users.entity';
 import { UsersService } from 'src/users/users.service';
 import { Repository } from 'typeorm';
@@ -44,7 +42,7 @@ export class AuthService {
         response_type: 'code',
         client_id: process.env.G_CLIENT_ID,
         redirect_uri: process.env.G_REDIRECT_URI,
-        scope: `https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email`,
+        scope: `https://www.googleapis.com/auth/userinfo.email`,
         access_type: 'offline',
       },
       kakao: {
@@ -120,5 +118,19 @@ export class AuthService {
     };
 
     return header[platform];
+  }
+
+  async getSocialUserInfo(platform: string, accessToken: string) {
+    const url = {
+      naver: `https://openapi.naver.com/v1/nid/me`,
+      google: `https://www.googleapis.com/oauth2/v2/userinfo`,
+      kakao: `https://kapi.kakao.com/v2/user/me`,
+    };
+
+    return await axios.get(url[platform], {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
   }
 }
