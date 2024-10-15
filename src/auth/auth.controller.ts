@@ -36,6 +36,11 @@ export class AuthController {
       access_token,
     );
 
+    const createdUser = await this.usersService.createUser(
+      platform,
+      userInfo.data,
+    );
+
     return access_token;
   }
 }
