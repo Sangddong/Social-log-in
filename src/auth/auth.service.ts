@@ -1,3 +1,4 @@
+import { Response } from 'express';
 import { Injectable, Param } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import axios from 'axios';
@@ -54,5 +55,70 @@ export class AuthService {
     };
 
     return queryParams[platform];
+  }
+
+  async getSocialAccessToken(platform: string, code: string) {
+    const url = this.getSocialTokenUrl(platform);
+    const params = this.getSocialTokenParams(platform, code);
+    const header = this.getSocialTokenHeader(platform);
+
+    const response = await axios.post(url, params, { headers: header });
+
+    return response.data.access_token;
+  }
+
+  private getSocialTokenUrl(platform: string) {
+    const url = {
+      naver: `https://nid.naver.com/oauth2.0/token`,
+      google: `https://oauth2.googleapis.com/token`,
+      kakao: `https://kauth.kakao.com/oauth/token`,
+    };
+
+    return url[platform];
+  }
+
+  private getSocialTokenParams(platform: string, code: string) {
+    const params = {
+      naver: new URLSearchParams({
+        grant_type: 'authorization_code',
+        client_id: process.env.N_CLIENT_ID,
+        client_secret: process.env.N_SECRET_KEY,
+        redirect_uri: process.env.N_REDIRECT_URI,
+        state: process.env.N_STATE,
+        code,
+      }),
+      google: new URLSearchParams({
+        grant_type: 'authorization_code',
+        client_id: process.env.G_CLIENT_ID,
+        client_secret: process.env.G_SECRET_KEY,
+        redirect_uri: process.env.G_REDIRECT_URI,
+        code,
+      }),
+      kakao: new URLSearchParams({
+        grant_type: 'authorization_code',
+        client_id: process.env.K_REST_API_KEY,
+        redirect_uri: process.env.K_REDIRECT_URI,
+        code,
+      }),
+    };
+
+    return params[platform];
+  }
+
+  private getSocialTokenHeader(platform: string) {
+    const header = {
+      naver: {
+        'X-Naver-Client-Id': process.env.N_CLIENT_ID,
+        'X-Naver-Client-Secret': process.env.N_CLIENT_SECRET,
+      },
+      google: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      kakao: {
+        'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+      },
+    };
+
+    return header[platform];
   }
 }

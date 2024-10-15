@@ -22,6 +22,11 @@ export class AuthController {
     @Query('code') code: string,
     @Res() response: Response,
   ) {
-    console.log(code);
+    const access_token = await this.authService.getSocialAccessToken(
+      platform,
+      code,
+    );
+    console.log(platform, 'access token: ', access_token);
+    return access_token;
   }
 }
